@@ -1,0 +1,23 @@
+@startuml ocp
+package "com.directi.training.ocp.exercise_refactored" {
+  abstract class ResourceAllocator {
+    + allocate()
+    + free(int resourceId)
+    - findFreeSlot()
+    - markSlotBusy(int resourceId)
+    - markSlotFree(int resourceId)
+  }
+  class SpaceResourceAllocator {
+    # findFreeSlot()
+    # markSlotBusy(int resourceId)
+    # markSlotFree(int resourceId)
+  }
+  class TimeResourceAllocator {
+    # findFreeSlot()
+    # markSlotBusy(int resourceId)
+    # markSlotFree(int resourceId)
+  }
+  ResourceAllocator <|-- SpaceResourceAllocator
+  ResourceAllocator <|-- TimeResourceAllocator
+}
+@enduml
