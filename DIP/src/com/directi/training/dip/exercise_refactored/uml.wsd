@@ -1,0 +1,44 @@
+@startuml DIP
+
+interface Encoder {
+    +encode(String input): String
+}
+
+class Base64Encoder implements Encoder {
+    +encode(String input): String
+}
+
+interface Reader {
+    +read(): String
+}
+
+interface Writer {
+    +write(String input): void
+}
+
+class FileReader implements Reader {
+    +read(): String
+}
+
+class NetworkReader implements Reader {
+    +read(): String
+}
+
+class FileWriter implements Writer {
+    +write(String input): void
+}
+
+class DatabaseWriter implements Writer {
+    +write(String input): void
+}
+
+class EncodingModule {
+    -_encoder: Encoder
+    +encode(Reader reader, Writer writer)
+}
+
+EncodingModule o-- Encoder
+EncodingModule --> Reader
+EncodingModule --> Writer
+
+@enduml
