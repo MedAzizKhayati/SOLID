@@ -1,0 +1,19 @@
+@startuml dip
+class EncodingModule {
+  +encodeWithFiles() throws IOException
+  +encodeBasedOnNetworkAndDatabase() throws IOException
+}
+
+class MyDatabase {
+  -_data : Map<Integer, String>
+  -_count : int
+  +write(inputString : String) : int
+}
+
+class EncodingModuleClient {
+  +main(args : String[]) throws IOException
+}
+
+EncodingModuleClient -> EncodingModule
+EncodingModule -> MyDatabase
+@enduml

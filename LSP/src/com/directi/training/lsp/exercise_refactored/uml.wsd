@@ -1,0 +1,27 @@
+@startuml lsp
+class Duck {
+  +quack()
+  +swim()
+  +isOn()
+}
+
+class ElectronicDuck {
+  -_on : boolean
+  +quack()
+  +swim()
+  +turnOn()
+  +turnOff()
+  +isOn()
+}
+
+class Pool {
+  +run()
+  +quack(Duck...)
+  +swim(Duck...)
+  -main(String[])
+}
+
+Duck <|-- ElectronicDuck
+Pool -> Duck
+Pool -> ElectronicDuck
+@enduml

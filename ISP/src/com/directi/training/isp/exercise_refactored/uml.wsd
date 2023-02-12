@@ -1,0 +1,53 @@
+@startuml isp
+interface Door {
+  +void lock()
+  +void unlock()
+  +void open()
+  +void close()
+}
+
+interface ProximityDoor extends Door {
+  +void proximityCallback()
+}
+
+interface TimeOutDoor extends Door {
+  +void timeOutCallback()
+}
+
+class SensingDoor implements ProximityDoor {
+  -boolean _locked
+  -boolean _opened
+
+  +SensingDoor(Sensor sensor)
+  +void lock()
+  +void unlock()
+  +void open()
+  +void close()
+  +void proximityCallback()
+}
+
+class TimedDoor implements TimeOutDoor {
+  -static final int TIME_OUT = 100
+  -boolean _locked
+  -boolean _opened
+
+  +TimedDoor(Timer timer)
+  +void lock()
+  +void unlock()
+  +void open()
+  +void close()
+  +void timeOutCallback()
+}
+
+class Sensor {
+  +void register(ProximityDoor door)
+  -boolean isPersonClose()
+}
+
+class Timer {
+  +void register(long timeOut, TimeOutDoor door)
+}
+
+Sensor --> ProximityDoor
+Timer --> TimeOutDoor
+@enduml
