@@ -13,7 +13,7 @@ interface Reader {
 }
 
 interface Writer {
-    +write(String input): void
+    +write(String input)
 }
 
 class FileReader implements Reader {
@@ -25,20 +25,24 @@ class NetworkReader implements Reader {
 }
 
 class FileWriter implements Writer {
-    +write(String input): void
+    +write(String input)
 }
 
 class DatabaseWriter implements Writer {
-    +write(String input): void
+    +write(String input)
 }
 
 class EncodingModule {
-    -_encoder: Encoder
-    +encode(Reader reader, Writer writer)
+    +encode(Reader reader, Writer writer): String
+}
+
+class MyDatabase {
+    +write(String input): int
 }
 
 EncodingModule o-- Encoder
 EncodingModule --> Reader
 EncodingModule --> Writer
+MyDatabase --o DatabaseWriter
 
 @enduml

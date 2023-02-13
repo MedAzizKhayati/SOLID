@@ -10,10 +10,5 @@ class MyDatabase {
   +write(inputString : String) : int
 }
 
-class EncodingModuleClient {
-  +main(args : String[]) throws IOException
-}
-
-EncodingModuleClient -> EncodingModule
-EncodingModule -> MyDatabase
+MyDatabase <-- EncodingModule
 @enduml
