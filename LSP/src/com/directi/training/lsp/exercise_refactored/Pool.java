@@ -3,28 +3,34 @@ package com.directi.training.lsp.exercise_refactored;
 public class Pool {
     public void run() {
         Duck donaldDuck = new Duck();
-        Duck electricDuck = new ElectronicDuck();
+        ElectronicDuck electricDuck = new ElectronicDuck();
         quack(donaldDuck, electricDuck);
         swim(donaldDuck, electricDuck);
     }
 
-    private void quack(Duck... ducks) {
-        for (Duck duck : ducks) {
-            if (duck.isOn()) {
-                duck.quack();
-            } else {
-                System.out.println("Duck is off, can't quack");
+    private void turnOn(IOnOffDevice... devices) {
+        for (IOnOffDevice device : devices) {
+            if (!device.isOn()) {
+                device.turnOn();
             }
         }
     }
 
-    private void swim(Duck... ducks) {
-        for (Duck duck : ducks) {
-            if (duck.isOn()) {
-                duck.swim();
-            } else {
-                System.out.println("Duck is off, can't swim");
+    private void swim(Swimmable... swimmables) {
+        for (Swimmable swimmable : swimmables) {
+            if (swimmable instanceof IOnOffDevice) {
+                turnOn((IOnOffDevice) swimmable);
             }
+            swimmable.swim();
+        }
+    }
+
+    private void quack(Quackable... quackables) {
+        for (Quackable quackable : quackables) {
+            if (quackable instanceof IOnOffDevice) {
+                turnOn((IOnOffDevice) quackable);
+            }
+            quackable.quack();
         }
     }
 

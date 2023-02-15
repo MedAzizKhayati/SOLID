@@ -41,8 +41,8 @@ class Timer {
   +register(timeOut: long, door: Door)
 }
 
+Sensor --> Door
+Timer -> Door
 SensingDoor --|> Door
 TimedDoor --|> Door
-Sensor --> SensingDoor
-Timer --> TimedDoor
 @enduml
