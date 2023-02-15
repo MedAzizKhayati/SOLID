@@ -10,7 +10,7 @@ public class Pool {
 
     private void turnOn(IOnOffDevice... devices) {
         for (IOnOffDevice device : devices) {
-            if (!device.isOn()) {
+            if(!device.isOn()) {
                 device.turnOn();
             }
         }
@@ -18,7 +18,7 @@ public class Pool {
 
     private void swim(Swimmable... swimmables) {
         for (Swimmable swimmable : swimmables) {
-            if (swimmable instanceof IOnOffDevice) {
+            if(swimmable instanceof IOnOffDevice) {
                 turnOn((IOnOffDevice) swimmable);
             }
             swimmable.swim();
@@ -27,7 +27,7 @@ public class Pool {
 
     private void quack(Quackable... quackables) {
         for (Quackable quackable : quackables) {
-            if (quackable instanceof IOnOffDevice) {
+            if(quackable instanceof IOnOffDevice) {
                 turnOn((IOnOffDevice) quackable);
             }
             quackable.quack();
