@@ -8,29 +8,15 @@ public class Pool {
         swim(donaldDuck, electricDuck);
     }
 
-    private void turnOn(IOnOffDevice... devices) {
-        for (IOnOffDevice device : devices) {
-            if(!device.isOn()) {
-                device.turnOn();
-            }
+    private void quack(Duck... ducks) {
+        for (Duck duck : ducks) {
+            duck.quack();
         }
     }
 
-    private void swim(Swimmable... swimmables) {
-        for (Swimmable swimmable : swimmables) {
-            if(swimmable instanceof IOnOffDevice) {
-                turnOn((IOnOffDevice) swimmable);
-            }
-            swimmable.swim();
-        }
-    }
-
-    private void quack(Quackable... quackables) {
-        for (Quackable quackable : quackables) {
-            if(quackable instanceof IOnOffDevice) {
-                turnOn((IOnOffDevice) quackable);
-            }
-            quackable.quack();
+    private void swim(Duck... ducks) {
+        for (Duck duck : ducks) {
+            duck.swim();
         }
     }
 

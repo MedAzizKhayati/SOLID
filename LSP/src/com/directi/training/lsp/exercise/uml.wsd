@@ -6,8 +6,8 @@ class Duck {
 
 class ElectronicDuck {
   -_on: boolean
-  +quack()
-  +swim()
+  +quack() throws Exception
+  +swim() throws Exception
   +turnOn()
   +turnOff()
 }

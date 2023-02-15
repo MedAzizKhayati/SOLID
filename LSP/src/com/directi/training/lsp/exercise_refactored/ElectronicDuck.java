@@ -1,38 +1,27 @@
 package com.directi.training.lsp.exercise_refactored;
 
-public class ElectronicDuck implements Quackable, Swimmable, IOnOffDevice {
+public class ElectronicDuck extends Duck {
     private boolean _on = false;
 
-    @Override
     public void quack() {
-        if (_on) {
-            System.out.println("Electronic duck quack...");
-        } else {
-            throw new RuntimeException("Can't quack when off");
+        if (!_on) {
+            turnOn();
         }
+        System.out.println("Electronic duck quack...");
     }
 
-    @Override
     public void swim() {
-        if (_on) {
-            System.out.println("Electronic duck swim");
-        } else {
-            throw new RuntimeException("Can't swim when off");
+        if (!_on) {
+            turnOn();
         }
+        System.out.println("Electronic duck swim...");
     }
 
-    @Override
     public void turnOn() {
         _on = true;
     }
 
-    @Override
     public void turnOff() {
         _on = false;
-    }
-
-    @Override
-    public boolean isOn() {
-        return _on;
     }
 }

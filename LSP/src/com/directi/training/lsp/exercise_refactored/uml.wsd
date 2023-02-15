@@ -1,39 +1,24 @@
 @startuml lsp
-interface Quackable {
-    +quack()
+class Duck {
+  +quack()
+  +swim()
 }
 
-interface Swimmable {
-    +swim()
-}
-
-interface IOnOffDevice {
-    +turnOn()
-    +turnOff()
-    +isOn()
-}
-
-class Duck implements Quackable, Swimmable {
-    +quack()
-    +swim()
-}
-
-class ElectronicDuck implements Quackable, Swimmable, IOnOffDevice {
-    +quack()
-    +swim()
-    +turnOn()
-    +turnOff()
-    +isOn()
+class ElectronicDuck {
+  -_on: boolean
+  +quack()
+  +swim()
+  +turnOn()
+  +turnOff()
 }
 
 class Pool {
-    +quack(Quackable... quackers)
-    +swim(Swimmable... swimmers)
-    +turnOn(IOnOffDevice... devices)
+  +run()
+  +quack(Duck...)
+  +swim(Duck...)
+  +main(String[])
 }
 
-Pool --> Swimmable
-Pool --> Quackable
-Pool --> IOnOffDevice
-
+Duck <|-- ElectronicDuck
+Pool -> Duck
 @enduml
